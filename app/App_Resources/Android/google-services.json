@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "778433901070",
+    "firebase_url": "https://ngrx-test-6fe0a.firebaseio.com",
+    "project_id": "ngrx-test-6fe0a",
+    "storage_bucket": "ngrx-test-6fe0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778433901070:android:e2f4e19fda7909d0",
+        "android_client_info": {
+          "package_name": "org.nativescript.ngrxtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778433901070-g79eo4jt8ku0l0fkbedffms4kg6kt1kp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5PsEZyFuoWB0Hwh4uL0L65K5yNkmSr1E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

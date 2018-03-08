@@ -1,0 +1,18 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Test"></Label>
+</ActionBar>
+
+<StackLayout class="page p-24">
+    <GridLayout rows="60" columns="*,auto" class="m-b-24">
+        <TextField col="0" [(ngModel)]="homeName"></TextField>
+        <Button col="1" text="Add home" (tap)="addHome()"></Button>
+    </GridLayout>
+    <GridLayout rows="auto,auto" columns="*, auto"
+                *ngFor="let home of homes$ | async"
+                (longPress)="deleteHome(home.id)"
+                class="btn btn-primary btn-active p-16">
+        <Label row="0" col="0" [text]="'id: ' + home.id"></Label>
+        <Label row="1" col="0" [text]="'name: ' + home.name"></Label>
+        <Button rowSpan="2" col="1" text="Update home" (tap)="updateHome(home)"></Button>
+    </GridLayout>
+</StackLayout>
