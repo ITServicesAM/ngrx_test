@@ -1,45 +1,34 @@
-import { createEntityAdapter, EntityState } from "@ngrx/entity";
-import { createFeatureSelector } from "@ngrx/store";
-import * as actions from "./home.actions";
+import * as homeActions from "./home.actions";
+import { Home } from '../models/home';
 
-export interface Home {
-    id: string;
-    name: string;
+export interface State {
+    data: Home[],
+    filter: any
 }
 
-export const homeAdapter = createEntityAdapter<Home>();
-
-export interface State extends EntityState<Home> {
-}
-
-const defaultHome = {
-    ids: ['firstHome'],
-    entities: {
-        'firstHome': {
-            id: 'firstHome',
-            name: 'Stadtvilla'
-        }
-    }
+export const initialState: State = {
+    data: [],
+    filter: undefined
 };
 
-export const initialState: State = homeAdapter.getInitialState();
-
-export function homeReducer(state: State = initialState, action: actions.HomeActions) {
+export function homeReducer(state: State = initialState, action: homeActions.Actions) {
     switch (action.type) {
-        case actions.ADD_ALL:
-            // console.log(`Home Reducer homes: ${JSON.stringify(action.homes)}`);
-            return homeAdapter.addAll(action.homes, state);
+        case homeActions.ADD_ALL:
+            // console.log(`Home Reducer data: ${JSON.stringify(action.homes)}`);
+            return {
+                ...state,
+                data: action.homes
+            };
+        case homeActions.FILTER_BY_NAME:
+            return {
+                ...state,
+                filter: !!action.filter ? (home: Home) => home.name === action.filter : (home) => home
+            };
 
         default:
             return state;
     }
 }
 
-export const getHomeState = createFeatureSelector<State>('home');
-
-export const {
-    selectIds,
-    selectEntities,
-    selectAll,
-    selectTotal
-} = homeAdapter.getSelectors(getHomeState);
+export const getHomes = (state: State) => state.data;
+export const getFilter = (state: State) => state.filter;

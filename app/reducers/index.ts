@@ -1,6 +1,18 @@
-import { ActionReducerMap } from "@ngrx/store";
-import { homeReducer } from "../home/home.reducer";
+import { ActionReducerMap, createFeatureSelector, createSelector } from "@ngrx/store";
+import * as fromHome from "../home/home.reducer";
 
-export const reducers: ActionReducerMap<any> = {
-    home: homeReducer
+export interface IAppState {
+    home: fromHome.State
+}
+
+export const reducers: ActionReducerMap<IAppState> = {
+    home: fromHome.homeReducer
 };
+
+export const getFeatureState = createFeatureSelector<IAppState>('home');
+
+export const getHomeState = createSelector(getFeatureState, (state: IAppState) => state.home);
+
+export const getAllHomes = createSelector(getHomeState, fromHome.getHomes);
+
+export const getHomesFilter = createSelector(getHomeState, fromHome.getFilter);

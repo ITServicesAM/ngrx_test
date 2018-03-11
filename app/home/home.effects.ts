@@ -4,8 +4,8 @@ import { Observable } from "rxjs/Observable";
 import { Action } from "@ngrx/store";
 import * as homeActions from "./home.actions";
 import { map, switchMap } from "rxjs/operators";
-import { Home } from "./home.reducer";
 import { FirebaseDataService } from "../firebase/firebase-data-service";
+import { Home } from '../models/home';
 
 @Injectable()
 export class HomeEffects {
@@ -24,7 +24,6 @@ export class HomeEffects {
         })
     );
 
-    //todo add create, update and delete effects
     @Effect()
     create$: Observable<Action> = this.actions$.ofType(homeActions.CREATE).pipe(
         switchMap((action: homeActions.Create) => {

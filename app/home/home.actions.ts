@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Home } from "./home.reducer";
+import { Home } from '../models/home';
 
 export const CREATE = '[Homes] Create';
 export const UPDATE = '[Homes] Update';
@@ -9,29 +9,35 @@ export const QUERY = '[Homes] Query';
 export const ADD_ALL = '[Homes] Add All';
 export const SUCCESS = '[Homes] Successful Update';
 
+export const FILTER_BY_NAME = '[Homes] Filter By Name';
+
 // Initial query
 export class Query implements Action {
     readonly type = QUERY;
 
-    constructor(public path: string) {}
+    constructor(public path: string) {
+    }
 }
 
 export class AddAll implements Action {
     readonly type = ADD_ALL;
 
-    constructor(public homes: Home[]) { }
+    constructor(public homes: Home[]) {
+    }
 }
 
 export class Success implements Action {
     readonly type = SUCCESS;
 
-    constructor() { }
+    constructor() {
+    }
 }
 
 export class Create implements Action {
     readonly type = CREATE;
 
-    constructor(public path: string, public home: Home) { }
+    constructor(public path: string, public home: Home) {
+    }
 }
 
 export class Update implements Action {
@@ -39,13 +45,22 @@ export class Update implements Action {
 
     constructor(public path: string,
                 public id: string,
-                public changes: Partial<Home>,) { }
+                public changes: Partial<Home>,) {
+    }
 }
 
 export class Delete implements Action {
     readonly type = DELETE;
 
-    constructor(public path: string, public id: string) { }
+    constructor(public path: string, public id: string) {
+    }
 }
 
-export type HomeActions = Create | Update | Delete | Query | AddAll | Success;
+export class FilterByName implements Action {
+    readonly type = FILTER_BY_NAME;
+
+    constructor(public filter: string) {
+    }
+}
+
+export type Actions = Create | Update | Delete | Query | AddAll | Success | FilterByName;

@@ -3,12 +3,13 @@
 </ActionBar>
 
 <StackLayout class="page p-24">
-    <GridLayout rows="60" columns="*,auto" class="m-b-24">
+    <GridLayout rows="60" columns="*,auto, auto" class="m-b-24">
         <TextField col="0" [(ngModel)]="homeName"></TextField>
         <Button col="1" text="Add home" (tap)="addHome()"></Button>
+        <Button col="2" text="Change Filter" (tap)="changeFilter()"></Button>
     </GridLayout>
     <GridLayout rows="auto,auto" columns="*, auto"
-                *ngFor="let home of homes$ | async"
+                *ngFor="let home of filteredHomes$ | async"
                 (longPress)="deleteHome(home.id)"
                 class="btn btn-primary btn-active p-16">
         <Label row="0" col="0" [text]="'id: ' + home.id"></Label>
