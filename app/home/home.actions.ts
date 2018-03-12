@@ -33,6 +33,13 @@ export class Success implements Action {
     }
 }
 
+export class FilterByName implements Action {
+    readonly type = FILTER_BY_NAME;
+
+    constructor(public filter: string) {
+    }
+}
+
 export class Create implements Action {
     readonly type = CREATE;
 
@@ -53,13 +60,6 @@ export class Delete implements Action {
     readonly type = DELETE;
 
     constructor(public path: string, public id: string) {
-    }
-}
-
-export class FilterByName implements Action {
-    readonly type = FILTER_BY_NAME;
-
-    constructor(public filter: string) {
     }
 }
 

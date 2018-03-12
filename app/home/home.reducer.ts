@@ -1,5 +1,7 @@
 import * as homeActions from "./home.actions";
 import { Home } from '../models/home';
+import { IAppState } from "../reducers";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface State {
     data: Home[],
@@ -44,3 +46,8 @@ export function homeReducer(state: State = initialState, action: homeActions.Act
 export const getHomes = (state: State) => state.data;
 export const getFilter = (state: State) => state.filter;
 export const getLoading = (state: State) => state.loading;
+export const getFeatureState = createFeatureSelector<IAppState>('home');
+export const getHomeState = createSelector(getFeatureState, (state: IAppState) => state.home);
+export const getAllHomes = createSelector(getHomeState, getHomes);
+export const getHomesFilter = createSelector(getHomeState, getFilter);
+export const getHomesLoading = createSelector(getHomeState, getLoading);

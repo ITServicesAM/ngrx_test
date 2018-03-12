@@ -3,8 +3,9 @@ import { Observable } from "rxjs/Observable";
 import { Store } from "@ngrx/store";
 import * as homeActions from "./home.actions";
 import { Home } from '../models/home';
-import { getAllHomes, getHomesFilter, getHomesLoading, IAppState } from '../reducers';
+import { IAppState } from '../reducers';
 import { map } from 'rxjs/operators';
+import { getAllHomes, getHomesFilter, getHomesLoading } from "./home.reducer";
 
 const faker = require('faker/locale/de');
 
@@ -49,14 +50,6 @@ export class HomeComponent implements OnInit {
     }
 
     changeFilter(enteredText: string) {
-        // let filterString;
-        // if (args) {
-        //     let textField = <TextField>args.object;
-        //     filterString = textField.text;
-        // } else {
-        //     filterString = this.homeName;
-        // }
-
         this.store.dispatch(new homeActions.FilterByName(enteredText));
     }
 
