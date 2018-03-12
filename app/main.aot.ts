@@ -3,4 +3,5 @@ import { platformNativeScript } from "nativescript-angular/platform-static";
 
 import { AppModuleNgFactory } from "./app.module.ngfactory";
 
+// noinspection JSIgnoredPromiseFromCall
 platformNativeScript().bootstrapModuleFactory(AppModuleNgFactory);

@@ -16,3 +16,5 @@ export const getHomeState = createSelector(getFeatureState, (state: IAppState) =
 export const getAllHomes = createSelector(getHomeState, fromHome.getHomes);
 
 export const getHomesFilter = createSelector(getHomeState, fromHome.getFilter);
+
+export const getHomesLoading = createSelector(getHomeState, fromHome.getLoading);

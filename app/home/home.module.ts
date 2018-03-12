@@ -8,6 +8,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { HomeEffects } from "./home.effects";
 import { NativeScriptFormsModule } from "nativescript-angular";
 import { reducers } from '../reducers';
+import { FilterComponent } from './components/filter.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { reducers } from '../reducers';
         EffectsModule.forFeature([HomeEffects])
     ],
     declarations: [
-        HomeComponent
+        HomeComponent,
+        FilterComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

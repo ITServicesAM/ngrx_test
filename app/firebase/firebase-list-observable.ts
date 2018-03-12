@@ -3,6 +3,7 @@ import { map } from "rxjs/operators";
 import { firestore } from "nativescript-plugin-firebase";
 import "rxjs/add/observable/of";
 import { NgZone } from "@angular/core";
+import CollectionReference = firestore.CollectionReference;
 
 export class FirebaseListObservable<T> {
 
@@ -23,7 +24,7 @@ export class FirebaseListObservable<T> {
 
     public create(value: T): Observable<any> {
         return Observable.create(subscriber => {
-            firestore.collection(this.path).add(Object.assign({}, {timeStamp: new Date()}, value)).then((docRef: firestore.DocumentReference) => {
+            (<CollectionReference>this.ref).add(Object.assign({}, {timeStamp: new Date()}, value)).then((docRef: firestore.DocumentReference) => {
                 const id: string = docRef.id;
                 return Observable.of(firestore.collection(this.path).doc(id).set(Object.assign({}, {id: id}, value), {merge: true}));
             }).catch(err => subscriber.err(err))

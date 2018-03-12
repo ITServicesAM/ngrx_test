@@ -1,0 +1,9 @@
+<GridLayout rows="auto, auto" columns="*, *" class="m-b-24">
+    <TextField row="0" col="0" colSpan="2"
+               #textfield
+               [(ngModel)]="enteredText"
+               autocapitalizationType="none"
+               (textChange)="onTextChanged($event)"></TextField>
+    <Button row="1" col="0" text="Add home" (tap)="onAddClicked()"></Button>
+    <Button row="1" col="1" text="Change Filter" (tap)="onChangeFilterClicked()"></Button>
+</GridLayout>

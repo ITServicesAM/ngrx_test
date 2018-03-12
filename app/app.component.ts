@@ -1,8 +1,11 @@
 import { Component } from "@angular/core";
-const firebase = require("nativescript-plugin-firebase");
+import { Store } from '@ngrx/store';
+import { IAppState } from './reducers';
 
-firebase.init({
-}).then(
+const firebase = require("nativescript-plugin-firebase");
+const faker = require('faker/locale/de');
+
+firebase.init({}).then(
     () => {
         console.log("firebase.init done");
     },
@@ -15,4 +18,8 @@ firebase.init({
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
-export class AppComponent { }
+export class AppComponent {
+    constructor(private store: Store<IAppState>) {
+
+    }
+}

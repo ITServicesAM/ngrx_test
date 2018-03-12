@@ -3,4 +3,5 @@ import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 
 import { AppModule } from "./app.module";
 
+// noinspection JSIgnoredPromiseFromCall
 platformNativeScriptDynamic().bootstrapModule(AppModule);
