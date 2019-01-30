@@ -3,29 +3,22 @@
 </ActionBar>
 
 <GridLayout rows="auto,48,*" columns="*" class="page p-24">
-    <filter-component row="0" col="0"
-                      (add)="addHome($event)"
-                      (filter)="changeFilter($event)">
-    </filter-component>
+    <StackLayout row="0" col="0">
+        <filter-component
+                (add)="addHome($event)"
+                (filter)="changeFilter($event)">
+        </filter-component>
+    </StackLayout>
 
     <Label row="1" [text]="'Anzahl homes: '+(numberOfHomes$|async)"></Label>
 
-    <ListView *ngIf="!(loading | async)" row="2" col="0" [items]="filteredHomes$ | async">
-        <ng-template let-home="item">
-            <GridLayout rows="auto,auto" columns="*, auto"
-                        (longPress)="deleteHome(home.id)"
-                        class="btn btn-primary btn-active p-16 m-b-8">
-                <Label row="0" col="0" [text]="'id: ' + home.id"></Label>
-                <Label row="1" col="0" [text]="'name: ' + home.name"></Label>
-                <Button rowSpan="2" col="1" text="Update home" (tap)="updateHome(home)"></Button>
-            </GridLayout>
-        </ng-template>
-    </ListView>
-    <ActivityIndicator row="2" col="0"
-                       verticalAlignment="center"
-                       horizontalAlignment="center"
-                       [busy]="loading$ | async"
-                       height="96"
-                       width="96">
-    </ActivityIndicator>
+    <StackLayout row="2" col="0">
+        <app-list-component
+                [homes]="filteredHomes$|async"
+                [loading]="loading$ | async"
+                (deleteHome)="deleteHome($event)"
+                (updateHome)="updateHome($event)">
+        </app-list-component>
+    </StackLayout>
+
 </GridLayout>

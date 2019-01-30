@@ -1,0 +1,20 @@
+<GridLayout rows="*" columns="*">
+    <ListView *ngIf="!loading" row="0" col="0" [items]="homes">
+        <ng-template let-home="item">
+            <GridLayout rows="auto,auto" columns="*, auto"
+                        (longPress)="deleteHome(home.id)"
+                        class="btn btn-primary btn-active p-16 m-b-8">
+                <Label row="0" col="0" [text]="'id: ' + home.id"></Label>
+                <Label row="1" col="0" [text]="'name: ' + home.name"></Label>
+                <Button rowSpan="2" col="1" text="Update home" (tap)="updateHome(home)"></Button>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+    <ActivityIndicator row="0" col="0"
+                       verticalAlignment="center"
+                       horizontalAlignment="center"
+                       [busy]="loading"
+                       height="96"
+                       width="96">
+    </ActivityIndicator>
+</GridLayout>

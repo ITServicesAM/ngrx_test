@@ -8,19 +8,19 @@ import { EffectsModule } from "@ngrx/effects";
 import { HomeEffects } from "./home.effects";
 import { NativeScriptFormsModule } from "nativescript-angular";
 import { reducers } from '../reducers';
-import { FilterComponent } from './components/filter.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
         HomeRoutingModule,
+        SharedModule,
         StoreModule.forFeature('home', reducers),
         EffectsModule.forFeature([HomeEffects])
     ],
     declarations: [
-        HomeComponent,
-        FilterComponent
+        HomeComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
